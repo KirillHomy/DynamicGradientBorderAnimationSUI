@@ -1,4 +1,4 @@
- workflows:
+workflows:
   ios-release:
     name: iOS Release Workflow
     environment:
@@ -26,4 +26,8 @@
       - build/export/*.ipa
     publishing:
       app_store_connect:
-        submit_to_testflight: trueё
+        submit_to_testflight: true
+        credentials: app_store_credentials  # или см. ниже ручной вариант
+    automatic_code_signing:
+      apple_team_id: CSS48FCS24
+      use_apple_auto_signing: true
