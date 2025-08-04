@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8EF0CE402E4162D5009D1012 /* codemagic.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 8EF0CE3E2E4162D3009D1012 /* codemagic.yaml */; };
+		8EF0CE452E41635D009D1012 /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EF0CE442E41635D009D1012 /* ExportOptions.plist */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		8E26E54B2D43EEE700E28D28 /* DynamicGradientBorderAnimationSUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicGradientBorderAnimationSUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EF0CE3E2E4162D3009D1012 /* codemagic.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codemagic.yaml; sourceTree = "<group>"; };
+		8EF0CE442E41635D009D1012 /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExportOptions.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +39,8 @@
 		8E26E5422D43EEE700E28D28 = {
 			isa = PBXGroup;
 			children = (
+				8EF0CE3E2E4162D3009D1012 /* codemagic.yaml */,
+				8EF0CE442E41635D009D1012 /* ExportOptions.plist */,
 				8E26E54D2D43EEE700E28D28 /* DynamicGradientBorderAnimationSUI */,
 				8E26E54C2D43EEE700E28D28 /* Products */,
 			);
@@ -109,6 +118,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EF0CE452E41635D009D1012 /* ExportOptions.plist in Resources */,
+				8EF0CE402E4162D5009D1012 /* codemagic.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
