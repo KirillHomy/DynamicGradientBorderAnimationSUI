@@ -3,11 +3,11 @@ workflows:
     name: iOS Release Workflow
     environment:
       xcode: latest
-      groups:
-        - app_store_credentials
       vars:
         XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
         XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
+        APP_STORE_KEY_ID: "X85MC66T7S"
+        APP_STORE_ISSUER_ID: "cde931e9-0b05-4235-879c-025492b1650c"
     scripts:
       - name: Сборка .ipa
         script: |
@@ -27,5 +27,8 @@ workflows:
       - build/export/*.ipa
     publishing:
       app_store_connect:
-        credentials: app_store_credentials
         submit_to_testflight: true
+        authentication:
+          api_key: $APP_STORE_API_KEY
+          key_id: $APP_STORE_KEY_ID
+          issuer_id: $APP_STORE_ISSUER_ID
