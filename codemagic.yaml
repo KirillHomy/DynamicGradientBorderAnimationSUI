@@ -3,11 +3,11 @@ workflows:
     name: iOS Release Workflow
     environment:
       xcode: latest
+      groups:
+        - app_store_credentials 
       vars:
         XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
         XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
-        APP_STORE_KEY_ID: "X85MC66T7S"
-        APP_STORE_ISSUER_ID: "cde931e9-0b05-4235-879c-025492b1650c"
     scripts:
       - name: Сборка .ipa
         script: |
@@ -28,7 +28,3 @@ workflows:
     publishing:
       app_store_connect:
         submit_to_testflight: true
-        authentication:
-          api_key: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JR1RBZ0VBTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEJIa3dkd0lCQVFRZytyNi9mTHZzQ3pIQjYyZkUKUFowYTM1ODN2V3BFMkkxb2J6d1RVRlFDcnhDZ0NnWUlLb1pJemowREFRZWhSQU5DQUFTQ2lnVUJkSkZYWDlPOQp4d3hZQ1NtV05NMmdIMnJSMHVBRHAyTGM2UWxGYyt2aFJkMk1xbzUzcEM2Mjd6ZkFDZUQreW5VN05jUkt2NkhhCkpoQTArWUJrCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0=
-          key_id: X85MC66T7S
-          issuer_id: cde931e9-0b05-4235-879c-025492b1650c
