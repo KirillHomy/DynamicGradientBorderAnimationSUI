@@ -1,24 +1,29 @@
-workflows:
+ workflows:
   ios-release:
     name: iOS Release Workflow
     environment:
       xcode: latest
       groups:
         - app_store_credentials
+      vars:
+        XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
+        XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
     scripts:
       - name: Сборка .ipa
         script: |
-          xcodebuild -project DynamicGradientBorderAnimationSUI.xcodeproj \
-                     -scheme DynamicGradientBorderAnimationSUI \
+          xcodebuild -project $XCODE_PROJECT \
+                     -scheme $XCODE_SCHEME \
                      -configuration Release \
-                     -archivePath $HOME/build/DynamicGradientBorderAnimationSUI.xcarchive \
+                     -archivePath $HOME/build/App.xcarchive \
                      -allowProvisioningUpdates \
                      clean archive
-
+          
           xcodebuild -exportArchive \
-                     -archivePath $HOME/build/DynamicGradientBorderAnimationSUI.xcarchive \
+                     -archivePath $HOME/build/App.xcarchive \
                      -exportOptionsPlist ExportOptions.plist \
-                     -exportPath $HOME/build/export \
-                     -allowProvisioningUpdates
+                     -exportPath $HOME/build/export
     artifacts:
       - build/export/*.ipa
+    publishing:
+      app_store_connect:
+        submit_to_testflight: trueё
