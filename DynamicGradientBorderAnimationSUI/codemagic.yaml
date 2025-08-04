@@ -1,0 +1,20 @@
+workflows:
+  ios-release:
+    name: iOS Release Workflow
+    environment:
+      xcode: latest
+    scripts:
+      - name: Сборка .ipa
+        script: |
+          xcodebuild -workspace DynamicGradientBorderAnimationSUI.xcworkspace \
+                     -scheme DynamicGradientBorderAnimationSUI \
+                     -configuration Release \
+                     -archivePath $HOME/build/DynamicGradientBorderAnimationSUI.xcarchive \
+                     clean archive
+
+          xcodebuild -exportArchive \
+                     -archivePath $HOME/build/DynamicGradientBorderAnimationSUI.xcarchive \
+                     -exportOptionsPlist ExportOptions.plist \
+                     -exportPath $HOME/build/export
+    artifacts:
+      - build/export/*.ipa
