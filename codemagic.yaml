@@ -3,10 +3,6 @@ workflows:
     name: iOS Release Workflow
     environment:
       xcode: latest
-    signing:
-      automatic_code_signing:
-        team_id: CSS48FCS24
-        bundle_identifier: "com.hoki.DynamicGradientBorderAnimationSUI"
     scripts:
       - name: Сборка .ipa
         script: |
