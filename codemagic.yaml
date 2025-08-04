@@ -3,6 +3,8 @@ workflows:
     name: iOS Release Workflow
     environment:
       xcode: latest
+      groups:
+        - app_store_credentials
     scripts:
       - name: Сборка .ipa
         script: |
