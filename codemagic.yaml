@@ -6,7 +6,7 @@ workflows:
     scripts:
       - name: Сборка .ipa
         script: |
-          xcodebuild -workspace DynamicGradientBorderAnimationSUI.xcworkspace \
+          xcodebuild -project DynamicGradientBorderAnimationSUI.xcodeproj \
                      -scheme DynamicGradientBorderAnimationSUI \
                      -configuration Release \
                      -archivePath $HOME/build/DynamicGradientBorderAnimationSUI.xcarchive \
