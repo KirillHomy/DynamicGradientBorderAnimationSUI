@@ -21,13 +21,11 @@ workflows:
           xcodebuild -exportArchive \
                      -archivePath $HOME/build/App.xcarchive \
                      -exportOptionsPlist ExportOptions.plist \
-                     -exportPath $HOME/build/export
+                     -exportPath $HOME/build/export \
+                     -allowProvisioningUpdates
     artifacts:
       - build/export/*.ipa
     publishing:
       app_store_connect:
+        credentials: app_store_credentials
         submit_to_testflight: true
-        credentials: app_store_credentials  # или см. ниже ручной вариант
-    automatic_code_signing:
-      apple_team_id: CSS48FCS24
-      use_apple_auto_signing: true
