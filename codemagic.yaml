@@ -10,11 +10,13 @@ workflows:
                      -scheme DynamicGradientBorderAnimationSUI \
                      -configuration Release \
                      -archivePath $HOME/build/DynamicGradientBorderAnimationSUI.xcarchive \
+                     -allowProvisioningUpdates \
                      clean archive
 
           xcodebuild -exportArchive \
                      -archivePath $HOME/build/DynamicGradientBorderAnimationSUI.xcarchive \
                      -exportOptionsPlist ExportOptions.plist \
-                     -exportPath $HOME/build/export
+                     -exportPath $HOME/build/export \
+                     -allowProvisioningUpdates
     artifacts:
       - build/export/*.ipa
