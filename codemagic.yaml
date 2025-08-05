@@ -1,19 +1,18 @@
 workflows:
-  ios-minimal:
-    name: iOS Minimal Build
+  ios-simple:
+    name: Simple iOS Build
     environment:
       xcode: latest
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.hoki.TestRecorderScreen
-      vars:
-        XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
-        XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
     scripts:
-      - name: Build .ipa
+      - name: Codesign and build
         script: |
-          xcode-project build-ipa \
-            --project "$XCODE_PROJECT" \
-            --scheme "$XCODE_SCHEME"
+          keychain initialize
+          app-store-connect fetch-signing-files com.hoki.TestRecorderScreen --type IOS_APP_STORE --create
+          keychain add-certificates
+          xcode-project use-profiles
+          xcode-project build-ipa --project "DynamicGradientBorderAnimationSUI.xcodeproj" --scheme "DynamicGradientBorderAnimationSUI"
     artifacts:
       - build/ios/ipa/*.ipa
