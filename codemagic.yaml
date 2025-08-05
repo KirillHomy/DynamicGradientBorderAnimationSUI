@@ -1,13 +1,16 @@
 workflows:
   ios-release:
-    name: iOS Release Build Only
+    name: iOS Release Workflow
     environment:
       xcode: latest
+      automatic_code_signing:
+        apple_team_id: CSS48FCS24  # замени на свой Team ID, смотри в App Store Connect
+        use_apple_auto_signing: true
       vars:
         XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
         XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
     scripts:
-      - name: Build .ipa
+      - name: Сборка .ipa
         script: |
           xcodebuild -project "$XCODE_PROJECT" \
                      -scheme "$XCODE_SCHEME" \
