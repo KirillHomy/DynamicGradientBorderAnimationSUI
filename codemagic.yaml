@@ -4,7 +4,7 @@ workflows:
     environment:
       xcode: latest
       groups:
-        - app_store_credentials
+        - app_store_credentials  # подтянет ключи из UI
       vars:
         XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
         XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
@@ -17,7 +17,7 @@ workflows:
                      -archivePath $HOME/build/App.xcarchive \
                      -allowProvisioningUpdates \
                      clean archive
-          
+
           xcodebuild -exportArchive \
                      -archivePath $HOME/build/App.xcarchive \
                      -exportOptionsPlist ExportOptions.plist \
@@ -28,8 +28,4 @@ workflows:
     publishing:
       app_store_connect:
         submit_to_testflight: true
-        authentication:
-          api_key: $APP_STORE_PRIVATE_KEY
-          key_id: $APP_STORE_KEY_ID
-          issuer_id: $APP_STORE_ISSUER_ID
 
