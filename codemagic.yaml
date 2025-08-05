@@ -16,3 +16,5 @@ workflows:
           xcode-project build-ipa --project "DynamicGradientBorderAnimationSUI.xcodeproj" --scheme "DynamicGradientBorderAnimationSUI"
     artifacts:
       - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
