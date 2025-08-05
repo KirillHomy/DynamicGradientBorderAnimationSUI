@@ -1,28 +1,19 @@
 workflows:
-  ios-simple-build:
-    name: iOS Release Workflow
+  ios-minimal:
+    name: iOS Minimal Build
     environment:
       xcode: latest
-      automatic_code_signing:
-        apple_team_id: CSS48FCS24  # замени на свой Team ID, смотри в App Store Connect
-        use_apple_auto_signing: true
       vars:
         XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
         XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
     scripts:
-      - name: Сборка .ipa
+      - name: Build .ipa
         script: |
-          xcodebuild -project "$XCODE_PROJECT" \
-                     -scheme "$XCODE_SCHEME" \
-                     -configuration Release \
-                     -archivePath $HOME/build/App.xcarchive \
-                     -allowProvisioningUpdates \
-                     clean archive
-
-          xcodebuild -exportArchive \
-                     -archivePath $HOME/build/App.xcarchive \
-                     -exportOptionsPlist ExportOptions.plist \
-                     -exportPath $HOME/build/export \
-                     -allowProvisioningUpdates
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
-      - build/export/*.ipa
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+
