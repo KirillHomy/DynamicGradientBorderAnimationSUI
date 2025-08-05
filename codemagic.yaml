@@ -1,18 +1,16 @@
 workflows:
   ios-release:
-    name: iOS Release Workflow
+    name: iOS Release Build Only
     environment:
       xcode: latest
-      groups:
-        - app_store_credentials  # подтянет ключи из UI
       vars:
         XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
         XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
     scripts:
-      - name: Сборка .ipa
+      - name: Build .ipa
         script: |
-          xcodebuild -project $XCODE_PROJECT \
-                     -scheme $XCODE_SCHEME \
+          xcodebuild -project "$XCODE_PROJECT" \
+                     -scheme "$XCODE_SCHEME" \
                      -configuration Release \
                      -archivePath $HOME/build/App.xcarchive \
                      -allowProvisioningUpdates \
@@ -25,7 +23,3 @@ workflows:
                      -allowProvisioningUpdates
     artifacts:
       - build/export/*.ipa
-    publishing:
-      app_store_connect:
-        submit_to_testflight: true
-
