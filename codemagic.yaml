@@ -5,7 +5,7 @@ workflows:
       xcode: latest
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.hoki.DynamicGradientBorderAnimationSUI
+        bundle_identifier: com.hoki.TestRecorderScreen
       vars:
         XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
         XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
