@@ -4,7 +4,7 @@ workflows:
     environment:
       xcode: latest
       groups:
-        - app_store_credentials 
+        - app_store_credentials  # <-- имя группы, где лежат все ключи
       vars:
         XCODE_PROJECT: "DynamicGradientBorderAnimationSUI.xcodeproj"
         XCODE_SCHEME: "DynamicGradientBorderAnimationSUI"
@@ -28,3 +28,4 @@ workflows:
     publishing:
       app_store_connect:
         submit_to_testflight: true
+        credentials: app_store_credentials  # <-- эта строка указывает на группу
